@@ -41,11 +41,17 @@ function ArticlesList({
     };
   }, []);
 
-  if (!data) return <div className='h-screen flex justify-center'>Not found</div>;
-
+  if (!data)
+    return <div className='h-screen flex justify-center'>Not found</div>;
+  
   return (
-    <main className='flex h-full justify-center bg-neutral-50 pb-8'>
+    <main className='flex flex-1 h-full justify-center bg-neutral-50 pb-8'>
       <div className='w-full max-w-6xl mx-4 md:mx-8 py-6 flex flex-col md:grid md:grid-cols-12 gap-12 lg:gap-y-20'>
+        {data.pages[0].articles.length === 0 && (
+          <div className='flex md:col-span-12 justify-center'>
+            No articles found.
+          </div>
+        )}
         {data.pages.map((group, i) => (
           <Fragment key={i}>
             {group.articles.map((article) => (

@@ -9,6 +9,7 @@ import { SuccessToast, ErrorToast, LoadingToast } from "../toasts";
 import Title from "./title";
 import Subtitle from "./subtitle";
 import Content from "./content";
+import { generateCoverImageURI, generatePutUrl } from "@/api/api-article";
 
 export default function Write() {
   const router = useRouter();
@@ -55,10 +56,7 @@ export default function Write() {
       file_type: picture.type,
     });
 
-    const res = await fetch(
-      `http://localhost:3000/api/v1/articles/generate-put-url?${params}`
-    );
-    const data = await res.json();
+    const data = await generatePutUrl(params);
 
     const key = data.content.key;
     const url = data.content.url;
@@ -79,16 +77,9 @@ export default function Write() {
   };
 
   const getCoverImgURI = async (key: string) => {
-    const res = await fetch(
-      `http://localhost:3000/api/v1/articles/generate-get-url?key=${key}`
-    );
-    const data = await res.json();
+    const data = await generateCoverImageURI(key);
 
-    if (res.ok) {
-      return data.content;
-    } else {
-      console.log("Error");
-    }
+    return data.content.url;
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -101,7 +92,7 @@ export default function Write() {
     let url = "";
     if (imageFile instanceof File) {
       const key = await uploadImage(imageFile);
-      url = await getCoverImgURI(key);
+      url = await getCoverImgURI(key!);
     }
 
     formData.append("tags", JSON.stringify(TranformOptionsToTags(selections)));

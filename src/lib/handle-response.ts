@@ -1,9 +1,16 @@
 export async function handleResponse<T>(response: Response): Promise<T> {
-  const data = await response.json();
-  
-  if (!response.ok) {
-    throw new Error(data.message);
-  }
+  const contentType = response.headers.get("content-type");
 
-  return data as T;
+  if (contentType && contentType.includes("application/json")) {
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message);
+    }
+
+    return data as T;
+  } else {
+    throw new Error(`Something bad happened. Please try again.`);
+  }
 }
+
