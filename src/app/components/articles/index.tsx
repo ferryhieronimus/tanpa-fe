@@ -76,5 +76,8 @@ export function ArticlesFromHome() {
 }
 
 export function ArticlesFromTag({ tag }: { tag: string }) {
-  return <ArticlesList hook={() => useArticlesByTag(tag)} />;
+  // Call the hook directly within the component
+  const useHook = () => useArticlesByTag(tag);
+
+  return <ArticlesList hook={useHook} />;
 }

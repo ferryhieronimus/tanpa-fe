@@ -28,7 +28,7 @@ export default function Loading() {
     return skeletons;
   };
   return (
-    <div className='max-w-6xl grid grid-cols-12 gap-8 w-full mt-4 mx-auto'>
+    <div className='max-w-6xl animate-pulse grid grid-cols-12 gap-8 w-full mt-4 mx-auto px-4 pb-8'>
       <div className='w-full justify-between items-center flex h-16 rounded-md col-span-12'>
         <div className='w-16 h-16 bg-gray-200 rounded-full col-span-12'></div>
         <div className='w-32 h-8 bg-gray-200 rounded-3xl col-span-12'></div>
@@ -36,7 +36,7 @@ export default function Loading() {
 
       <div className='w-full justify-between flex h-12 bg-gray-200 rounded-md col-span-12'></div>
 
-      <div className='w-full h-64 bg-gray-200 rounded-md col-span-12'></div>
+      <div className='w-full h-64 bg-gray-200 rounded-md col-span-12 hidden md:block'></div>
       {renderSkeleton()}
     </div>
   );

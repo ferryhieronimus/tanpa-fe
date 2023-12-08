@@ -30,6 +30,7 @@ export default async function Article({ id }: { id: string }) {
       <div className='flex flex-wrap gap-x-4 max-w-2xl leading-loose mt-8 md:text-lg md:leading-loose text-neutral-600'>
         {data.tags.map((tag, index) => (
           <Link
+            key={index}
             href={`/tag/${slugify(tag, {
               lower: true,
               strict: true,

@@ -18,7 +18,7 @@ const promiseOptions = (inputValue: string) =>
     }, 1000);
   });
 
-export default ({
+const Tag = ({
   handleChange,
 }: {
   handleChange: (selectedOption: TagOption[]) => void;
@@ -42,3 +42,7 @@ export default ({
     })}
   />
 );
+
+Tag.displayName = "Tag";
+
+export default Tag;

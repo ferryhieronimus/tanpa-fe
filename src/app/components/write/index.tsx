@@ -125,7 +125,7 @@ export default function Write() {
       handleCloseModal();
       setIsLoading(false);
     }
-  }, [isSuccess, isError]);
+  }, [isSuccess, isError, router]);
 
   return (
     <>

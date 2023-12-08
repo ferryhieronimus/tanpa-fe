@@ -2,9 +2,9 @@ import { handleResponse } from "@/lib/handle-response";
 import { CompleteRegistration, User } from "@/types";
 import { LoginTypes } from "@/types";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export async function getCurrentUser() {
+export async function getCurrentUser(): Promise<User> {
   const response = await fetch(`${BASE_URL}/api/v1/users/self`, {
     method: "GET",
     credentials: "include",
@@ -13,7 +13,11 @@ export async function getCurrentUser() {
     },
   });
 
-  return handleResponse<User>(response);
+  if (!response.ok) {
+    throw new Error("Failed to fetch user");
+  }
+
+  return response.json();
 }
 
 export async function login(data: LoginTypes) {
@@ -54,7 +58,6 @@ export async function editUser(data: CompleteRegistration) {
 
   return handleResponse(response);
 }
-
 
 export async function logout() {
   const response = await fetch(`${BASE_URL}/api/v1/users/signout`, {

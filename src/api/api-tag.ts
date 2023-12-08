@@ -1,7 +1,7 @@
 import { handleResponse } from "@/lib/handle-response";
 import { Tag } from "@/types";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function getTagById(id: string): Promise<Tag> {
   const response = await fetch(`${BASE_URL}/api/v1/tags/` + id, {
