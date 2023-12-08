@@ -28,7 +28,7 @@ export default function Loading() {
     return skeletons;
   };
   return (
-    <div className='max-w-6xl grid grid-cols-12 gap-8 w-full mt-4 mx-auto'>
+    <div className='max-w-6xl grid grid-cols-12 gap-8 w-full mt-4 mx-auto px-4'>
 
       <div className='w-full h-64 bg-gray-200 rounded-md col-span-12'></div>
       {renderSkeleton()}

@@ -7,7 +7,7 @@ export default function Hero() {
         <div className='flex-1 flex flex-col justify-between py-6 gap-8'>
           <div className='flex flex-col gap-2'>
             <div className='font-semibold text-lg'>
-              Are you surprised that some of us don't have inner voices?
+              Are you surprised that some of us don&apos;t have inner voices?
             </div>
             <div>
               Inner voice is a voice inside your head. According to Psychology
@@ -18,7 +18,7 @@ export default function Hero() {
               for without) inner voice.
             </div>
             <div>
-              It turns out that inner voice is common, but it's not a part of
+              It turns out that inner voice is common, but it&apos;s not a part of
               being human.
             </div>
           </div>
